@@ -1,0 +1,23 @@
+[build-system]
+requires = ['setuptools>=63.2']
+build-backend = 'setuptools.build_meta'
+
+
+[project]
+name = "hackboard"
+version = "0.1.0"
+authors = [
+    { name = "Asger Jon Vistisen", email = "asgerjon2@gmail.com" },
+]
+description = "Fast Word Processing"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/AsgerJon/hackboard"
+"Bug Tracker" = "https://github.com/AsgerJon/hackboard"
