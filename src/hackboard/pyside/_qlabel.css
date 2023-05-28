@@ -1,0 +1,9 @@
+/*
+ * Copyright (c) 2023 Asger Jon Vistisen
+ * MIT Licence
+ */
+
+QLabel {
+    background: rgba(223, 223, 255, 255);
+    border: 2px solid rgba(0, 0, 127, 255);
+}
