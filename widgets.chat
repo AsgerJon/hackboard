@@ -1,0 +1,12 @@
+{
+  "version" : "0.2.0",
+  "activeDialogId" : 0,
+  "uiState" : {
+    "sidePanelOpen" : false
+  },
+  "dialogs" : [ {
+    "name" : "New chat",
+    "id" : 0,
+    "messages" : [ ]
+  } ]
+}
