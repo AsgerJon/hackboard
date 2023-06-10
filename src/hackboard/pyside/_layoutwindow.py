@@ -16,7 +16,6 @@ wordStart = QTextCursor.MoveOperation.StartOfWord
 wordEnd = QTextCursor.MoveOperation.EndOfWord
 move = QTextCursor.MoveMode.MoveAnchor
 mark = QTextCursor.MoveMode.KeepAnchor
-selectWord = QTextCursor.
 
 
 class LayoutWindow(BaseWindow):
@@ -70,8 +69,6 @@ class LayoutWindow(BaseWindow):
     self.getCursor().movePosition()
     return self
 
-
-
   def show(self) -> NoReturn:
     """Sets up the widgets before invoking the show super call"""
     self.setupWidgets()
@@ -89,4 +86,3 @@ class LayoutWindow(BaseWindow):
   def keyPressEvent(self, event: QKeyEvent) -> NoReturn:
     """Triggers spell checking"""
     BaseWindow.keyPressEvent(self, event)
-

@@ -7,6 +7,7 @@ import os
 
 
 def getStyle(context: str) -> str:
+  """Get the style for the given context"""
   if context.lower() == 'qlabel':
     root = os.getcwd()
     fid = os.path.join(root, 'src', 'hackboard', 'pyside', '_qlabel.css')
