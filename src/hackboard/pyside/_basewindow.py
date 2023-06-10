@@ -16,37 +16,13 @@ from hackboard.pyside import getStyle
 
 
 class BaseWindow(QMainWindow):
-  """
-  A subclass of QMainWindow that provides menus and actions for a simple
+  """A subclass of QMainWindow that provides menus and actions for a simple
   word processing application.
 
   This class creates File and Edit menus with basic actions for creating,
   opening, saving, cutting, copying, and pasting files.
   You can add more widgets and layouts to this subclass later on to create
-  your word processing application.
-
-  Signals:
-  -------
-  None
-
-  Slots:
-  -----
-  new_file()
-      Creates a new file.
-  open_file()
-      Opens an existing file.
-  save_file()
-      Saves the current file.
-  save_file_as()
-      Saves the current file with a new name.
-  cut()
-      Cuts the selected text.
-  copy()
-      Copies the selected text.
-  paste()
-      Pastes the copied or cut text.
-
-  """
+  your word processing application."""
 
   spaceKeyRelease = Signal()
   spaceKeyPress = Signal()
