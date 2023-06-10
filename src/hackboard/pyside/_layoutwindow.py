@@ -19,15 +19,13 @@ mark = QTextCursor.MoveMode.KeepAnchor
 
 
 class LayoutWindow(BaseWindow):
-  """
-  A subclass of BaseWindow that provides layouts and widgets for a simple
+  """A subclass of BaseWindow that provides layouts and widgets for a simple
   word processing application.
 
   This class adds a vertical layout to the QMainWindow and populates it
   with a QLabel, a QLineEdit, and a QTextEdit.
   The QLabel displays the current file name, the QLineEdit is used for
-  entering search terms, and the QTextEdit is used for editing text.
-  """
+  entering search terms, and the QTextEdit is used for editing text."""
 
   def __init__(self, parent: QWidget = None) -> None:
     BaseWindow.__init__(self, parent)
@@ -63,11 +61,6 @@ class LayoutWindow(BaseWindow):
   def getCursor(self) -> QTextCursor:
     """Getter-function for underlying text cursor"""
     return self.documentWidget.textCursor()
-
-  def __iter__(self, ) -> QWidget:
-    """Implementation of iteration"""
-    self.getCursor().movePosition()
-    return self
 
   def show(self) -> NoReturn:
     """Sets up the widgets before invoking the show super call"""

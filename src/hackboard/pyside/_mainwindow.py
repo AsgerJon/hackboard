@@ -40,9 +40,6 @@ class MainWindow(InputWindow):
     print('debugFunc02')
     self._logWidget.tellMe('block count: %s' % self._cursor)
 
-  def iterateWords(self) -> Any:
-    """"""
-
   def show(self) -> NoReturn:
     """Reimplementation"""
     InputWindow.show(self)

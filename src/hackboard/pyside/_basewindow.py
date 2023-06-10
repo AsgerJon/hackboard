@@ -108,6 +108,7 @@ class BaseWindow(QMainWindow):
 
   def setupDebuggers(self) -> NoReturn:
     """Sets up the debuggers"""
+    print('setupDebuggers')
     self.debugAction01.setShortcut("QKeySequence.fromString('F1')")
     self.debugAction01.setShortcutContext(
       Qt.ShortcutContext.ApplicationShortcut)
