@@ -1,14 +1,13 @@
 """The backgroundStyle is an instance of BaseStyle"""
-#  MIT Licence
 #  Copyright (c) 2023 Asger Jon Vistisen
+#  MIT Licence
 from __future__ import annotations
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor, QFont
 from icecream import ic
 
-from workstyle import Family
-from workstyle.stylesettings import BaseStyle
+from hackboard.settings import BaseStyle, Family
 
 ic.configureOutput(includeContext=True)
 _baseData = dict(
@@ -104,6 +103,16 @@ _labelData = dict(
   fontWeight=QFont.Weight.Bold,
   fontSize=16,
 )
+_headerData = dict(
+  fillColor=QColor(0, 0, 0, 0, ),
+  fillStyle=Qt.BrushStyle.NoBrush,
+  lineColor=QColor(255, 0, 0, 255),
+  lineStyle=Qt.PenStyle.SolidLine,
+  lineWidth=1,
+  fontFamily=Family.modern,
+  fontWeight=QFont.Weight.Bold,
+  fontSize=16,
+)
 _debugData = dict(
   fillColor=QColor(0, 0, 0, 0, ),
   fillStyle=Qt.BrushStyle.NoBrush,
@@ -122,4 +131,5 @@ hoveredSquareStyle = BaseStyle('Hover', _hoveredSquareData)
 outlineStyle = BaseStyle('Outline', _outlineData)
 gridStyle = BaseStyle('Grid', _gridStyleData)
 labelStyle = BaseStyle('Label', _labelData)
+headerStyle = BaseStyle('Label', _headerData)
 debugStyle = BaseStyle('debug', _debugData)

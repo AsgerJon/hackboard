@@ -7,7 +7,7 @@ from typing import NoReturn
 
 from PySide6.QtGui import QKeyEvent
 
-from hackboard.pyside import LayoutWindow
+from hackboard import LayoutWindow
 
 
 class InputWindow(LayoutWindow):

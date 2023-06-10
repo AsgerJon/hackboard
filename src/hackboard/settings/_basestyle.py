@@ -1,6 +1,6 @@
 """BaseStyle"""
-#  MIT Licence
 #  Copyright (c) 2023 Asger Jon Vistisen
+#  MIT Licence
 from __future__ import annotations
 
 from typing import NoReturn
@@ -8,10 +8,15 @@ from typing import NoReturn
 from PySide6.QtCore import Qt, QRect
 from PySide6.QtGui import QBrush, QFont, QPen, QColor, QPainter
 from icecream import ic
+from worktoy.typetools import TypeBag
 from worktoy.waitaminute import ProceduralError
-from workstyle import Family
+
+from hackboard.workside import CoreWidget
+from hackboard.settings import Family
 
 ic.configureOutput(includeContext=True)
+
+Graphic = TypeBag(QPainter, CoreWidget)
 
 
 class BaseStyle:
@@ -71,13 +76,18 @@ class BaseStyle:
     pen.setWidth(self._data.get('lineWidth'))
     return pen
 
-  def __matmul__(self, other: QPainter) -> QPainter:
+  def __matmul__(self, other: Graphic) -> Graphic:
     """Applies these settings to the given painter"""
-    self.setViewPort(other.viewport())
-    other.setPen(self.getPen())
-    other.setFont(self.getFont())
-    other.setBrush(self.getBrush())
-    return other
+    if isinstance(other, QPainter):
+      self.setViewPort(other.viewport())
+      other.setPen(self.getPen())
+      other.setFont(self.getFont())
+      other.setBrush(self.getBrush())
+      return other
+
+    if isinstance(other, CoreWidget):
+      other.setStyle(self)
+      return other
 
   def __str__(self) -> str:
     """String representation"""

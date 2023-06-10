@@ -4,15 +4,11 @@
 
 from __future__ import annotations
 
-import os
 from typing import NoReturn
 
 from PySide6.QtCore import Qt, Signal
-from PySide6.QtGui import QAction, QPixmap, QKeyEvent
-from PySide6.QtWidgets import QMainWindow, QMenu, QLabel, QStatusBar, \
-  QSizePolicy, QWidget
-
-from hackboard.pyside import getStyle
+from PySide6.QtGui import QAction, QKeyEvent
+from PySide6.QtWidgets import QMainWindow, QLabel, QSizePolicy, QWidget
 
 
 class BaseWindow(QMainWindow):
@@ -30,7 +26,6 @@ class BaseWindow(QMainWindow):
   def __init__(self, parent: QWidget = None) -> None:
     QMainWindow.__init__(self, parent)
     statusBar = QLabel()
-    statusBar.setStyleSheet(getStyle('QLabel'))
     policy = QSizePolicy()
     policy.setVerticalPolicy(QSizePolicy.Policy.Maximum)
     policy.setHorizontalPolicy(QSizePolicy.Policy.Expanding)
@@ -108,7 +103,6 @@ class BaseWindow(QMainWindow):
 
   def setupDebuggers(self) -> NoReturn:
     """Sets up the debuggers"""
-    print('setupDebuggers')
     self.debugAction01.setShortcut("QKeySequence.fromString('F1')")
     self.debugAction01.setShortcutContext(
       Qt.ShortcutContext.ApplicationShortcut)

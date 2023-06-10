@@ -1,14 +1,18 @@
 """CoreWidget subclasses QWidget providing common and general
 functionality."""
-#  MIT Licence
 #  Copyright (c) 2023 Asger Jon Vistisen
+#  MIT Licence
 from __future__ import annotations
 
 from typing import NoReturn
 
+from PySide6.QtCore import QRectF
+from PySide6.QtGui import QBrush, QPen
 from PySide6.QtWidgets import QWidget, QSizePolicy
 from worktoy.parsing import extractArg
 from worktoy.stringtools import stringList
+
+from hackboard.settings import BaseStyle
 
 
 class CoreWidget(QWidget):
@@ -59,8 +63,19 @@ class CoreWidget(QWidget):
   def __init__(self, *args, **kwargs) -> None:
     parent = self.parseParent(*args, **kwargs)
     QWidget.__init__(self, parent)
+    self._style = None
     self.setupWidgets()
     self.setupActions()
+
+  def getStyle(self) -> BaseStyle:
+    """Getter-function for the style"""
+    if isinstance(self._style, BaseStyle):
+      return self._style
+    raise TypeError
+
+  def setStyle(self, style: BaseStyle) -> NoReturn:
+    """Setter-function for the style"""
+    self._style = style
 
   def setupWidgets(self) -> NoReturn:
     """Sets up the widgets"""
