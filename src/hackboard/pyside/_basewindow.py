@@ -62,43 +62,43 @@ class BaseWindow(QMainWindow):
     self.statusBar().addWidget(statusBar)
 
     # Create menus
-    file_menu = self.menuBar().addMenu("&File")
-    edit_menu = self.menuBar().addMenu("&Edit")
+    fileMenu = self.menuBar().addMenu("&File")
+    editMenu = self.menuBar().addMenu("&Edit")
     helpMenu = self.menuBar().addMenu("&Help")
 
     # Create actions
-    new_action = QAction("&New", self)
-    open_action = QAction("&Open", self)
-    save_action = QAction("&Save", self)
-    save_as_action = QAction("Save &As...", self)
-    exit_action = QAction("&Exit", self)
+    newAction = QAction("&New", self)
+    openAction = QAction("&Open", self)
+    saveAction = QAction("&Save", self)
+    saveAsAction = QAction("Save &As...", self)
+    exitAction = QAction("&Exit", self)
 
-    cut_action = QAction("Cu&t", self)
-    copy_action = QAction("&Copy", self)
-    paste_action = QAction("&Paste", self)
+    cutAction = QAction("Cu&t", self)
+    copyAction = QAction("&Copy", self)
+    pasteAction = QAction("&Paste", self)
 
     # Add actions to menus
-    file_menu.addAction(new_action)
-    file_menu.addAction(open_action)
-    file_menu.addAction(save_action)
-    file_menu.addAction(save_as_action)
-    file_menu.addSeparator()
-    file_menu.addAction(exit_action)
+    fileMenu.addAction(newAction)
+    fileMenu.addAction(openAction)
+    fileMenu.addAction(saveAction)
+    fileMenu.addAction(saveAsAction)
+    fileMenu.addSeparator()
+    fileMenu.addAction(exitAction)
 
-    edit_menu.addAction(cut_action)
-    edit_menu.addAction(copy_action)
-    edit_menu.addAction(paste_action)
+    editMenu.addAction(cutAction)
+    editMenu.addAction(copyAction)
+    editMenu.addAction(pasteAction)
 
     # Connect signals and slots
-    new_action.triggered.connect(self.new_file)
-    open_action.triggered.connect(self.open_file)
-    save_action.triggered.connect(self.save_file)
-    save_as_action.triggered.connect(self.save_file_as)
-    exit_action.triggered.connect(self.close)
+    newAction.triggered.connect(self.newFile)
+    openAction.triggered.connect(self.openFile)
+    saveAction.triggered.connect(self.saveFile)
+    saveAsAction.triggered.connect(self.saveFileAs)
+    exitAction.triggered.connect(self.close)
 
-    cut_action.triggered.connect(self.cut)
-    copy_action.triggered.connect(self.copy)
-    paste_action.triggered.connect(self.paste)
+    cutAction.triggered.connect(self.cut)
+    copyAction.triggered.connect(self.copy)
+    pasteAction.triggered.connect(self.paste)
 
     self.debugAction01 = QAction("Debug 01", self)
     self.debugAction02 = QAction("Debug 02", self)
@@ -125,6 +125,13 @@ class BaseWindow(QMainWindow):
     helpMenu.addAction(self.debugAction11)
     helpMenu.addAction(self.debugAction12)
 
+  def show(self) -> NoReturn:
+    """Sets up debuggers"""
+    self.setupDebuggers()
+    QMainWindow.show(self)
+
+  def setupDebuggers(self) -> NoReturn:
+    """Sets up the debuggers"""
     self.debugAction01.setShortcut("QKeySequence.fromString('F1')")
     self.debugAction01.setShortcutContext(
       Qt.ShortcutContext.ApplicationShortcut)
@@ -185,15 +192,6 @@ class BaseWindow(QMainWindow):
       Qt.ShortcutContext.ApplicationShortcut)
     self.debugAction12.triggered.connect(self.debugFunc12)
 
-  def show(self) -> NoReturn:
-    """Sets up debuggers"""
-    self.setupDebuggers()
-    QMainWindow.show(self)
-
-  def setupDebuggers(self) -> NoReturn:
-    """Sets up the debuggers"""
-    print('Setting up debuggers!')
-
   def keyReleaseEvent(self, event: QKeyEvent) -> NoReturn:
     """Triggers spell checking"""
     QMainWindow.keyReleaseEvent(self, event)
@@ -239,100 +237,23 @@ class BaseWindow(QMainWindow):
     """Debugger 12"""
 
   # Define slots
-  def new_file(self):
-    """
-    Creates a new file.
+  def newFile(self) -> NoReturn:
+    """Creates a new file."""
 
-    Parameters:
-    ----------
-    None
+  def openFile(self) -> NoReturn:
+    """Opens an existing file."""
 
-    Returns:
-    -------
-    None
-    """
-    pass
+  def saveFile(self) -> NoReturn:
+    """Saves the current file"""
 
-  def open_file(self):
-    """
-    Opens an existing file.
+  def saveFileAs(self) -> NoReturn:
+    """Saves the current file with a new name"""
 
-    Parameters:
-    ----------
-    None
+  def cut(self) -> NoReturn:
+    """Cuts the selected text"""
 
-    Returns:
-    -------
-    None
-    """
-    pass
+  def copy(self) -> NoReturn:
+    """Copies the selected text"""
 
-  def save_file(self):
-    """
-    Saves the current file.
-
-    Parameters:
-    ----------
-    None
-
-    Returns:
-    -------
-    None
-    """
-    pass
-
-  def save_file_as(self):
-    """
-    Saves the current file with a new name.
-
-    Parameters:
-    ----------
-    None
-
-    Returns:
-    -------
-    None
-    """
-    pass
-
-  def cut(self):
-    """
-    Cuts the selected text.
-
-    Parameters:
-    ----------
-    None
-
-    Returns:
-    -------
-    None
-    """
-    pass
-
-  def copy(self):
-    """
-    Copies the selected text.
-
-    Parameters:
-    ----------
-    None
-
-    Returns:
-    -------
-    None
-    """
-    pass
-
-  def paste(self):
-    """
-    Pastes the copied or cut text.
-
-    Parameters:
-    ----------
-    None
-
-    Returns:
-    -------
-    None
-    """
-    pass
+  def paste(self) -> NoReturn:
+    """Pastes the copied or cut text"""
